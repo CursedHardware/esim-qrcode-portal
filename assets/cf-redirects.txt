@@ -1,4 +1,6 @@
 /br1 /1$smdp.io$QR-G-5C-1LS-1W1Z9P7
 /br2 /1$smdp.io$QR-G-5C-KR-1PCDWP9
 /br3 /1$smdp.io$QRF-BETTERROAMING-PMRDGIR2EARDEIT5
+/tigo /1$millicomelsalvador.validereachdpplus.com$GENERICJOWMI-FAHTCU0-SKFMYPW6UIEFGRWC8GE933ITFAUVN63WMUVHFOWTS80
+/speedtest /1$rsp.truphone.com$QRF-SPEEDTEST
 /dumper /1$rsp.septs.app$ZXVpY2MtbWFudWFsLWRldkBzZXB0cy5lbWFpbA
