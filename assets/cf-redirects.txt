@@ -2,6 +2,7 @@
 /br2 /1$smdp.io$QR-G-5C-KR-1PCDWP9
 /br3 /1$smdp.io$QRF-BETTERROAMING-PMRDGIR2EARDEIT5
 /tigo /1$millicomelsalvador.validereachdpplus.com$GENERICJOWMI-FAHTCU0-SKFMYPW6UIEFGRWC8GE933ITFAUVN63WMUVHFOWTS80
+/redtea /1$rsp-eu.redteamobile.com$5901981126831169
 /speedtest /1$rsp.truphone.com$QRF-SPEEDTEST
 /tmo /1$t-mobile.gdsb.net$
 
