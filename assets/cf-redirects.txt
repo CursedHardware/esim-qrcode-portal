@@ -4,7 +4,11 @@
 /tigo /1$millicomelsalvador.validereachdpplus.com$GENERICJOWMI-FAHTCU0-SKFMYPW6UIEFGRWC8GE933ITFAUVN63WMUVHFOWTS80
 /redtea /1$rsp-eu.redteamobile.com$5901981126831169
 /speedtest /1$rsp.truphone.com$QRF-SPEEDTEST
+
+# T-Mobile
 /tmo /1$t-mobile.gdsb.net$
+# Vodafone
+/vdf /1$vfgb.idemia.io$
 
 /dumper /1$rsp.septs.app$ZXVpY2MtbWFudWFsLWRldkBzZXB0cy5lbWFpbA
 
