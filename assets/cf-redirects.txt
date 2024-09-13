@@ -7,8 +7,8 @@
 
 # T-Mobile
 /tmo /1$t-mobile.gdsb.net$
-# Vodafone
-/vdf /1$vfgb.idemia.io$
+# Vodafone UK
+/vdf/uk /1$vfgb.idemia.io$
 
 /dumper /1$rsp.septs.app$ZXVpY2MtbWFudWFsLWRldkBzZXB0cy5lbWFpbA
 
