@@ -7,8 +7,10 @@
 
 # T-Mobile
 /tmo /1$t-mobile.gdsb.net$
+/tmo-alt /1$cust-005-v4-prod-atl2.gdsb.net$
 # Vodafone UK
 /vdf/uk /1$vfgb.idemia.io$
+/vdf/uk-alt /1$vuk-gto.prod.ondemandconnectivity.com$
 
 /dumper /1$rsp.septs.app$ZXVpY2MtbWFudWFsLWRldkBzZXB0cy5lbWFpbA
 
