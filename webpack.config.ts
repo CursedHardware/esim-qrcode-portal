@@ -5,6 +5,8 @@ import HTMLPlugin from 'html-webpack-plugin'
 import CSPHTMLPlugin from 'csp-html-webpack-plugin'
 import path from 'path'
 import type { Configuration } from 'webpack'
+import { emitFile } from '@nice-labs/emit-file-webpack-plugin'
+import { assetLinks } from './scripts/asset-links'
 
 const ASSETS_FILE = path.join(__dirname, 'assets')
 const asset = (...paths: string[]) => path.join(ASSETS_FILE, ...paths)
@@ -61,6 +63,12 @@ const configure: Configuration = {
         { from: asset('cf-headers.txt'), to: '_headers', toType: 'file' },
         { from: asset('cf-redirects.txt'), to: '_redirects', toType: 'file' },
       ],
+    }),
+    emitFile({
+      name: '.well-known/assetlinks.json',
+      content() {
+        return JSON.stringify(assetLinks)
+      },
     }),
   ],
   devServer: {
