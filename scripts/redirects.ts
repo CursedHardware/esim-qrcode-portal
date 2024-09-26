@@ -1,3 +1,5 @@
+import emitFile from '@nice-labs/emit-file-webpack-plugin'
+
 const redirects: Record<string, string> = {
   // from https://esimqr.com
   'br1': '1$smdp.io$QR-G-5C-1LS-1W1Z9P7',
@@ -25,9 +27,14 @@ const redirects: Record<string, string> = {
 }
 
 export function emitRedirects() {
-  const lines: string[] = []
-  for (const name of Object.keys(redirects)) {
-    lines.push([`/${name}`, `/${redirects[name]}`].join(' '))
-  }
-  return lines.join('\n')
+  return emitFile({
+    name: '_redirects',
+    content() {
+      const lines: string[] = []
+      for (const name of Object.keys(redirects)) {
+        lines.push([`/${name}`, `/${redirects[name]}`].join(' '))
+      }
+      return lines.join('\n')
+    },
+  })
 }

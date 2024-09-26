@@ -1,3 +1,5 @@
+import emitFile from '@nice-labs/emit-file-webpack-plugin'
+
 const paths: Record<string, HeadersInit> = {
   '/*': {
     'X-Content-Type-Options': 'nosniff',
@@ -9,14 +11,19 @@ const paths: Record<string, HeadersInit> = {
 }
 
 export function emitHeaders() {
-  const lines: string[] = []
-  let headers: Headers
-  for (const pathname of Object.keys(paths)) {
-    lines.push(pathname)
-    headers = new Headers(paths[pathname])
-    for (const name of headers.keys()) {
-      lines.push(`\t${name}: ${headers.get(name)}`)
-    }
-  }
-  return lines.join('\n').replace(/\t/g, '\x20'.repeat(2))
+  return emitFile({
+    name: '_headers',
+    content() {
+      const lines: string[] = []
+      let headers: Headers
+      for (const pathname of Object.keys(paths)) {
+        lines.push(pathname)
+        headers = new Headers(paths[pathname])
+        for (const name of headers.keys()) {
+          lines.push(`\t${name}: ${headers.get(name)}`)
+        }
+      }
+      return lines.join('\n').replace(/\t/g, '\x20'.repeat(2))
+    },
+  })
 }

@@ -1,13 +1,12 @@
 /// <reference types="webpack-dev-server" />
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin'
-import HTMLPlugin from 'html-webpack-plugin'
 import CSPHTMLPlugin from 'csp-html-webpack-plugin'
+import HTMLPlugin from 'html-webpack-plugin'
 import path from 'path'
 import type { Configuration } from 'webpack'
-import { emitFile } from '@nice-labs/emit-file-webpack-plugin'
-import { assetLinks } from './scripts/asset-links'
-import { emitRedirects } from './scripts/redirects'
+import { emitAssetLinks } from './scripts/asset-links'
 import { emitHeaders } from './scripts/headers'
+import { emitRedirects } from './scripts/redirects'
 import { emitRobotsTXT } from './scripts/robots'
 
 const ASSETS_FILE = path.join(__dirname, 'assets')
@@ -59,15 +58,10 @@ const configure: Configuration = {
     new CleanPlugin({
       cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'dist')],
     }),
-    emitFile({
-      name: '.well-known/assetlinks.json',
-      content() {
-        return JSON.stringify(assetLinks)
-      },
-    }),
-    emitFile({ name: '_redirects', content: emitRedirects }),
-    emitFile({ name: '_headers', content: emitHeaders }),
-    emitFile({ name: 'robots.txt', content: emitRobotsTXT }),
+    emitAssetLinks(),
+    emitRedirects(),
+    emitHeaders(),
+    emitRobotsTXT(),
   ],
   devServer: {
     server: 'https',
