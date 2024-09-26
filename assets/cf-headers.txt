@@ -1,6 +1,0 @@
-/*
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  X-Robots-Tag: noindex, nofollow
-  Referrer-Policy: no-referrer
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload

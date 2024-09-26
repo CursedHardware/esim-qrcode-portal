@@ -1,12 +1,14 @@
 /// <reference types="webpack-dev-server" />
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin'
-import CopyPlugin from 'copy-webpack-plugin'
 import HTMLPlugin from 'html-webpack-plugin'
 import CSPHTMLPlugin from 'csp-html-webpack-plugin'
 import path from 'path'
 import type { Configuration } from 'webpack'
 import { emitFile } from '@nice-labs/emit-file-webpack-plugin'
 import { assetLinks } from './scripts/asset-links'
+import { emitRedirects } from './scripts/redirects'
+import { emitHeaders } from './scripts/headers'
+import { emitRobotsTXT } from './scripts/robots'
 
 const ASSETS_FILE = path.join(__dirname, 'assets')
 const asset = (...paths: string[]) => path.join(ASSETS_FILE, ...paths)
@@ -57,19 +59,15 @@ const configure: Configuration = {
     new CleanPlugin({
       cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'dist')],
     }),
-    new CopyPlugin({
-      patterns: [
-        { from: asset('robots.txt'), to: 'robots.txt', toType: 'file' },
-        { from: asset('cf-headers.txt'), to: '_headers', toType: 'file' },
-        { from: asset('cf-redirects.txt'), to: '_redirects', toType: 'file' },
-      ],
-    }),
     emitFile({
       name: '.well-known/assetlinks.json',
       content() {
         return JSON.stringify(assetLinks)
       },
     }),
+    emitFile({ name: '_redirects', content: emitRedirects }),
+    emitFile({ name: '_headers', content: emitHeaders }),
+    emitFile({ name: 'robots.txt', content: emitRobotsTXT }),
   ],
   devServer: {
     server: 'https',
