@@ -20,7 +20,7 @@ const redirects: Record<string, string> = {
   'vdf/uk': '1$vfgb.idemia.io$',
   'vdf/uk-alt': '1$vuk-gto.prod.ondemandconnectivity.com$',
   // from RSP Dumper
-  'dumper': `1$rsp.septs.app$${btoa('euicc-dev-manual@septs.pw').replace(/=+$/, '')}`,
+  'dumper': `1$rsp.septs.app$${hex('euicc-dev-manual@septs.pw')}`,
   // from Billion Connect
   'bc1': '1$ecprsp.eastcompeace.com$2D2E6B5F22354650856546C43DB8F265',
   'bc2': '1$ecprsp.eastcompeace.com$AF5877BAA75D47EAB55B148301626441',
@@ -37,4 +37,8 @@ export function emitRedirects() {
       return lines.join('\n')
     },
   })
+}
+
+function hex(input: string) {
+  return Buffer.from(input, 'ascii').toString('hex').toUpperCase()
 }
