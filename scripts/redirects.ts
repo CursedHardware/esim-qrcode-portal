@@ -7,8 +7,6 @@ const redirects: Record<string, string> = {
   'br2': '1$smdp.io$QR-G-5C-KR-1PCDWP9',
   // from https://www.betterroaming.com/esim-installation/
   'br3': '1$smdp.io$QRF-BETTERROAMING-PMRDGIR2EARDEIT5',
-  // from https://www.tigo.com.sv/esim
-  'tigo': '1$millicomelsalvador.validereachdpplus.com$GENERICJOWMI-FAHTCU0-SKFMYPW6UIEFGRWC8GE933ITFAUVN63WMUVHFOWTS80',
   // from https://redteago.com/redteago-esim-data-plans/esim-for-qrsim/
   'redtea': '1$rsp-eu.redteamobile.com$5901981126831169',
   // from https://www.speedtest.net/esimqr
