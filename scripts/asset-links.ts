@@ -11,6 +11,8 @@ const fingerprints = {
   'shiinasekiu': '4139278aacce8338c03dc9a6b0172c1880e0a4949ff3e05292c2e781765026fa',
   // from OpenEUICC
   'openeuicc': '57becc26b373a6475d093d33b0ea1c5e2bf2738ec0233680094ccbbcb500a13e',
+  // from Nekoko LPA
+  'nekokolpa': '2bed9f707dac37fd9249357ca15731c85c69d4bbd33a3498fefc40362304c50d',
 }
 
 const assetLinks: AssetLinks = [
@@ -19,8 +21,8 @@ const assetLinks: AssetLinks = [
   // Modified EasyEUICC by Ultra
   buildAssetLink('im.angry.easyeuicc', ['sakura', '9esim', 'shiinasekiu']),
   // Nekoko LPA
-  buildAssetLink('ee.nekoko.nlpa', ['sakura', '9esim', 'shiinasekiu']),
-  buildAssetLink('ee.nekoko.nlpa.multisign', ['sakura', '9esim', 'shiinasekiu']),
+  buildAssetLink('ee.nekoko.nlpa', ['nekokolpa', 'sakura', '9esim', 'shiinasekiu']),
+  buildAssetLink('ee.nekoko.nlpa.multisign', ['nekokolpa', 'sakura', '9esim', 'shiinasekiu']),
 ]
 
 export function emitAssetLinks() {
