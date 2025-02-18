@@ -1,5 +1,5 @@
 export function hasAppleSetupAvailable(): boolean {
-  if (navigator.platform !== 'iPhone') return false
+  if (navigator.platform !== 'iPhone' && navigator.platform !== 'iPad') return false
   const matched = /OS (\d+)_(\d+)/.exec(navigator.appVersion)
   if (matched === null) return false
   const major = Number.parseInt(matched[1], 10)
