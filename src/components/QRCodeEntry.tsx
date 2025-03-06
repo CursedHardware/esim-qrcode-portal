@@ -47,6 +47,8 @@ export const QRCodeEntry = memo(() => {
       const setup = new URL(AppleSetupURL)
       setup.searchParams.set('carddata', activation.toURI())
       location.assign(setup)
+    } else {
+      location.assign(activation.toURI())
     }
   }, [activation])
   return (
