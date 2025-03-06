@@ -72,7 +72,7 @@ const QRCode = memo<QRCodeProps>((props) => {
     QrCreator.render(
       {
         text: props.lpaString,
-        ecLevel: 'M',
+        ecLevel: 'L',
         size: props.size * Math.min(devicePixelRatio, 3),
         background: null,
         radius: 0,
