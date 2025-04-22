@@ -17,6 +17,10 @@ const redirects: Record<string, string> = {
   // from Vodafone UK
   'vdf/uk': '1$vfgb.idemia.io$',
   'vdf/uk-alt': '1$vuk-gto.prod.ondemandconnectivity.com$',
+  // Japan specific
+  'docomo': '1$sm-v4-004-a-gtm.pr.go-esim.com$',
+  'kddi-1': '1$sm-v4-012-a-gtm.pr.go-esim.com$',
+  'kddi-2': '1$kddi.prod.ondemandconnectivity.com$',
   // from RSP Dumper
   'dumper': `1$rsp.septs.app$${hex('euicc-dev-manual@septs.pw')}`,
   // from Billion Connect
