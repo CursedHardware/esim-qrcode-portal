@@ -43,7 +43,7 @@ const Figure = styled('figure')`
 export const QRCodeEntry = memo(() => {
   const activation = useActivationCode()
   const handleQRCodeClick = useCallback(() => {
-    if (navigator.appVersion.includes('iPhone')) {
+    if (navigator.appVersion.includes('iPhone') || navigator.appVersion.includes('iPad')) {
       if (!hasAppleSetupAvailable()) return
       const setup = new URL(AppleSetupURL)
       setup.searchParams.set('carddata', activation.toURI())
