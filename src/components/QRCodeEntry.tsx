@@ -6,8 +6,6 @@ import { hasAppleSetupAvailable } from '../utils/Apple'
 import QRCODE_PRELOADED_BACKGROUND from './assets/background.png'
 import { useActivationCode } from './hooks/lpa'
 
-const AppleSetupURL = new URL('https://esimsetup.apple.com/esim_qrcode_provisioning')
-
 const Container = styled('section')`
   display: flex;
   flex-direction: column;
@@ -43,12 +41,11 @@ const Figure = styled('figure')`
 export const QRCodeEntry = memo(() => {
   const activation = useActivationCode()
   const handleQRCodeClick = useCallback(() => {
-    if (navigator.appVersion.includes('iPhone') || navigator.appVersion.includes('iPad')) {
+    const appVersion = navigator.appVersion
+    if (/i(Phone|Pad)/.test(appVersion)) {
       if (!hasAppleSetupAvailable()) return
-      const setup = new URL(AppleSetupURL)
-      setup.searchParams.set('carddata', activation.toURI())
-      location.assign(setup)
-    } else if (navigator.appVersion.includes('Android')) {
+      location.assign(activation.toSetupURL('apple'))
+    } else if (appVersion.includes('Android') || navigator.userAgentData?.platform === 'Android') {
       location.assign(activation.toURI())
     }
   }, [activation])

@@ -4,3 +4,4 @@
 # Cloudflare
 /.wrangler
 /wrangler.toml
+/wrangler.jsonc

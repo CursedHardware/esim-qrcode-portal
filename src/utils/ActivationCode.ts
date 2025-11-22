@@ -50,14 +50,25 @@ export class ActivationCode {
       // optional, delete notification for device change
       this.deleteNotificationForDeviceChange,
     ]
-    while (parts.length > 3 && parts.at(-1)!.length === 0) {
-      parts.pop()
-    }
+    while (parts.length > 3 && parts[parts.length - 1].length === 0) parts.pop()
     return parts.join('$')
   }
 
   toURI() {
-    return 'LPA:' + this
+    return 'LPA:' + this.toString()
+  }
+
+  toSetupURL(type: 'apple' | 'android') {
+    let setup: URL
+    if (type === 'apple') {
+      setup = new URL('https://esimsetup.apple.com/esim_qrcode_provisioning')
+    } else if (type === 'android') {
+      setup = new URL('https://esimsetup.android.com/esim_qrcode_provisioning')
+    } else {
+      throw new Error('unknown device type')
+    }
+    setup.searchParams.set('carddata', this.toURI())
+    return setup.toString()
   }
 }
 
