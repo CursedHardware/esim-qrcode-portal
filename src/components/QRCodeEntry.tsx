@@ -2,6 +2,7 @@
 import styled from '@emotion/styled'
 import QrCreator from 'qr-creator'
 import { FC, memo, useCallback, useEffect, useState } from 'react'
+import { buildIntentURI } from '../utils/AndroidIntent'
 import { hasAppleSetupAvailable } from '../utils/Apple'
 import QRCODE_PRELOADED_BACKGROUND from './assets/background.png'
 import { useActivationCode } from './hooks/lpa'
@@ -42,11 +43,14 @@ export const QRCodeEntry = memo(() => {
   const activation = useActivationCode()
   const handleQRCodeClick = useCallback(() => {
     const appVersion = navigator.appVersion
-    if (/i(Phone|Pad)/.test(appVersion)) {
+    if (/i(Phone|Pad)/i.test(appVersion)) {
       if (!hasAppleSetupAvailable()) return
       location.assign(activation.toSetupURL('apple'))
     } else if (appVersion.includes('Android') || navigator.userAgentData?.platform === 'Android') {
-      location.assign(activation.toURI())
+      const intentUri = buildIntentURI(activation.toURI(), {
+        'S.browser_fallback_url': 'https://easyeuicc.org',
+      })
+      location.assign(intentUri)
     }
   }, [activation])
   return (

@@ -59,16 +59,9 @@ export class ActivationCode {
   }
 
   toSetupURL(type: 'apple' | 'android') {
-    let setup: URL
-    if (type === 'apple') {
-      setup = new URL('https://esimsetup.apple.com/esim_qrcode_provisioning')
-    } else if (type === 'android') {
-      setup = new URL('https://esimsetup.android.com/esim_qrcode_provisioning')
-    } else {
-      throw new Error('unknown device type')
-    }
-    setup.searchParams.set('carddata', this.toURI())
-    return setup.toString()
+    if (type === 'apple') return buildSetupURL('esimsetup.apple.com', this.toURI())
+    if (type === 'android') return buildSetupURL('esimsetup.android.com', this.toURI())
+    throw new Error('unknown device type')
   }
 }
 
@@ -80,4 +73,8 @@ function parseConfirmationCode(input: string, required: boolean): string | undef
 function toString(value: string | undefined): string {
   if (value === undefined) return ''
   return value
+}
+
+function buildSetupURL(host: string, uri: string): string {
+  return 'https://' + host + '/esim_qrcode_provisioning?carddata=' + encodeURIComponent(uri)
 }
