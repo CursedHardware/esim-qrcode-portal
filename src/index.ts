@@ -3,6 +3,7 @@ import ready from 'domready'
 import { createElement } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Entry } from './components/Entry'
+import faviconUri from './favicon.png'
 
 const container = document.createElement('main')
 container.className = css`
@@ -44,6 +45,14 @@ injectGlobal`
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 `
+
+ready(() => {
+  document.documentElement.translate = false
+  const favicon = document.createElement('link')
+  favicon.rel = 'icon'
+  favicon.href = faviconUri
+  document.head.appendChild(favicon)
+})
 
 ready(() => {
   document.body = document.createElement('body')

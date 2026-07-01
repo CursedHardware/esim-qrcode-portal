@@ -9,9 +9,6 @@ import { emitHeaders } from './scripts/headers'
 import { emitRedirects } from './scripts/redirects'
 import { emitRobotsTXT } from './scripts/robots'
 
-const ASSETS_FILE = path.join(__dirname, 'assets')
-const asset = (...paths: string[]) => path.join(ASSETS_FILE, ...paths)
-
 const configure: Configuration = {
   context: __dirname,
   resolve: {
@@ -34,15 +31,13 @@ const configure: Configuration = {
       },
       {
         type: 'asset/inline',
-        include: [path.join(__dirname, 'src', 'components', 'assets')],
+        include: [path.join(__dirname, 'src', 'favicon.png'), path.join(__dirname, 'src', 'components', 'assets')],
       },
     ],
   },
   plugins: [
     new HTMLPlugin({
       title: 'eSIM QRCode Portal',
-      favicon: asset('favicon.png'),
-      template: asset('template.ejs'),
       inject: 'body',
       meta: buildMeta({
         description: 'This is the eSIM QRCode portal page',
