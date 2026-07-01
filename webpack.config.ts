@@ -1,6 +1,6 @@
 /// <reference types="webpack-dev-server" />
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin'
-import CSPHTMLPlugin from 'csp-html-webpack-plugin'
+import InlineScriptHTMLPlugin from 'html-inline-script-webpack-plugin'
 import HTMLPlugin from 'html-webpack-plugin'
 import path from 'path'
 import type { Configuration } from 'webpack'
@@ -51,10 +51,7 @@ const configure: Configuration = {
         google: ['notranslate', 'nopangereadaloud'],
       }),
     }),
-    new CSPHTMLPlugin({
-      'style-src': ["'unsafe-inline'"],
-      'img-src': ["'self'", 'blob:', 'data:'],
-    }),
+    new InlineScriptHTMLPlugin(),
     new CleanPlugin({
       cleanOnceBeforeBuildPatterns: [path.join(__dirname, 'dist')],
     }),
